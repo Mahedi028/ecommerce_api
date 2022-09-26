@@ -11,8 +11,19 @@ This is an e-commerce platform management system using Laravel micro-framework l
 
 
 ## Contribution Guidline
+- Fork the repo
+- Clone the repo locally
+- Run `git checkout dev`
+- Create a new local branch 
+- Work on your local branch
+- Push to remote
+- When work is tested, done or ready
 
 
+
+## packages Used
+- Laravel Debugbar
+- Lumen Generator
 ## Security Vulnerabilities
 
 If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
