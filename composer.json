@@ -10,6 +10,8 @@
         "darkaonline/swagger-lume": "9.*",
         "flipbox/lumen-generator": "^9.1",
         "laravel/lumen-framework": "~6.0 || ~7.0 || ^8.0 || ^9.0",
+        "php-open-source-saver/jwt-auth": "^2.0",
+        "tymon/jwt-auth": "dev-develop",
         "zircote/swagger-php": "3.*"
     },
     "require-dev": {

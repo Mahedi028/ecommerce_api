@@ -16,3 +16,18 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->group([
+    'prefix'=>'api/v1'
+    ],
+    function () use($router){
+
+
+        //Users resource
+        $router->post('/users', 'UserController@create');
+        $router->get('/users', 'UserController@index');
+        $router->put('/users/{id}', 'UserController@update');
+
+        //user authentication
+        $router->post('/login', 'UserController@authenticate');
+    });

@@ -1,7 +1,7 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "BdShop API",
+        "title": "BdShop",
         "license": {
             "name": "MIT"
         },
@@ -9,12 +9,12 @@
     },
     "servers": [
         {
-            "url": "http://api.laravel-swagger-tutorial.test/",
-            "description": "API server"
+            "url": "petstore.swagger.io",
+            "description": "Api server"
         },
         {
-            "url": "http://localhost:8000/",
-            "description": "development-server"
+            "url": "http://localhost:8000/api/v1",
+            "description": "Development-server"
         }
     ],
     "paths": {
@@ -23,30 +23,136 @@
                 "tags": [
                     "User"
                 ],
-                "summary": "List all users",
+                "summary": "Returns all users list",
                 "operationId": "index",
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "full_name": {
+                                            "type": "string",
+                                            "example": "Anik Ahamed"
+                                        },
+                                        "username": {
+                                            "type": "string",
+                                            "example": "anik023"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "anik023@gmail.com"
+                                        },
+                                        "password": {
+                                            "type": "string",
+                                            "example": "dkakdnahwhheohwhdhsb"
+                                        },
+                                        "status": {
+                                            "type": "number",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Create an user",
+                "description": "Create an new user",
+                "operationId": "create",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "content"
+                                ],
+                                "properties": {
+                                    "content": {
+                                        "description": "Binary content of file",
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "status": {
+                                            "type": "boolean",
+                                            "example": "true"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "User created successfull"
+                                        },
+                                        "data": {
+                                            "type": "string",
+                                            "example": "anik023@gmail.com"
+                                        },
+                                        "errors": {
+                                            "type": "null"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        },
+        "/users/{id}": {
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Update User data",
+                "description": "Update existing user data",
+                "operationId": "update",
                 "parameters": [
                     {
-                        "name": "include",
-                        "in": "query",
-                        "required": false,
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID user",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "type": "string",
-                                "enum": [
-                                    "user"
-                                ]
-                            }
+                            "type": "string"
                         }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "An paged array of posts"
+                        "description": "successfull operation"
                     },
-                    "default": {
-                        "description": "unexpected error"
+                    "400": {
+                        "description": "Error validation"
                     }
                 }
             }

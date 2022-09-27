@@ -62,6 +62,7 @@ $app->singleton(
 $app->configure('app');
 // $app->configure('debugbar');
 $app->configure('swagger-lume');
+$app->configure('jwt');
 
 /*
 |--------------------------------------------------------------------------
@@ -78,9 +79,9 @@ $app->configure('swagger-lume');
 //     App\Http\Middleware\ExampleMiddleware::class
 // ]);
 
-// $app->routeMiddleware([
-//     'auth' => App\Http\Middleware\Authenticate::class,
-// ]);
+$app->routeMiddleware([
+    'auth' => App\Http\Middleware\Authenticate::class,
+]);
 
 /*
 |--------------------------------------------------------------------------
@@ -94,7 +95,9 @@ $app->configure('swagger-lume');
 */
 
 $app->register(App\Providers\AppServiceProvider::class);
-// $app->register(App\Providers\AuthServiceProvider::class);
+$app->register(App\Providers\AuthServiceProvider::class);
+// $app->register(PHPOpenSourceSaver\JWTAuth\Providers\LumenServiceProvider::class);
+$app->register(Tymon\JWTAuth\Providers\LumenServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 // if (env('APP_DEBUG')) {
 //     $app->register(Barryvdh\Debugbar\LumenServiceProvider::class);
